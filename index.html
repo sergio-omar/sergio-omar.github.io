@@ -1,3 +1,5 @@
+
+<----
 <html>
     <body>
         <div id="container" style="touch-action: none;">
@@ -6,3 +8,727 @@
         <script type='module' src="loadobj.js"></script>
     </body>
 </html>
+---->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sergio Omar Martínez — engineering portfolio in software, robotics and autonomous systems.">
+  <title>Sergio Omar Martínez | Engineering Portfolio</title>
+
+  <style>
+    :root {
+      --background: #09111f;
+      --surface: #111c2d;
+      --border: #29405a;
+      --text: #edf5ff;
+      --muted: #afbdd0;
+      --accent: #62dcc7;
+      --accent-dark: #082126;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--background);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: var(--accent); }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header { border-bottom: 1px solid var(--border); }
+
+    .navigation {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+
+    .navigation-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .navigation-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .navigation-links a:hover { color: var(--accent); }
+
+    .hero {
+      padding: 88px 0 76px;
+      background:
+        radial-gradient(circle at 88% 10%, rgba(98, 220, 199, 0.12), transparent 30%),
+        linear-gradient(180deg, #0c1727 0%, var(--background) 100%);
+    }
+
+    .section-label,
+    .card-label,
+    .job-date {
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 22px;
+      font-size: clamp(44px, 7vw, 78px);
+      line-height: 1.02;
+      letter-spacing: -4px;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+      font-size: clamp(30px, 4vw, 43px);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+    }
+
+    h3 {
+      margin-bottom: 12px;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 17px;
+      color: var(--text);
+      background: var(--surface);
+      text-decoration: none;
+    }
+
+    .button:hover { border-color: var(--accent); }
+
+    .button-primary {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+      background: var(--accent);
+      font-weight: 800;
+    }
+
+    .content-section {
+      padding: 68px 0;
+      scroll-margin-top: 20px;
+    }
+
+    .section-copy {
+      max-width: 760px;
+      color: var(--muted);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 28px 0 20px;
+    }
+
+    .filter-button {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 14px;
+      color: var(--text);
+      background: var(--surface);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .filter-button.active {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+      background: var(--accent);
+      font-weight: 800;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      display: flex;
+      min-height: 270px;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      background: var(--surface);
+    }
+
+    .card p { color: var(--muted); }
+
+    .card-link {
+      margin-top: auto;
+      padding-top: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 9px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .timeline { display: grid; gap: 14px; }
+
+    .job {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 30px;
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+
+    .job p {
+      max-width: 720px;
+      color: var(--muted);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .skill {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: var(--surface);
+      color: var(--muted);
+    }
+
+    .contact {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .contact-box {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .contact-box p {
+      max-width: 650px;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 900px) {
+      .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .job { grid-template-columns: 120px 1fr; }
+    }
+
+    @media (max-width: 650px) {
+      .navigation {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+
+      .navigation-links { gap: 14px; }
+      h1 { letter-spacing: -2.5px; }
+      .hero { padding: 60px 0; }
+      .card-grid { grid-template-columns: 1fr; }
+
+      .job,
+      .contact-box {
+        grid-template-columns: 1fr;
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top navigation -->
+  <header class="site-header">
+    <nav class="navigation container" aria-label="Main navigation">
+      <a class="brand" href="#top">SOM / ENGINEERING</a>
+
+      <div class="navigation-links">
+        <a href="#projects">Projects</a>
+        <a href="#github">GitHub</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Introduction -->
+    <section class="hero">
+      <div class="container">
+        <div class="section-label">Software · Autonomous systems · Robotics</div>
+        <h1>Sergio Omar Martínez García</h1>
+
+        <p class="hero-copy">
+          I connect software, intelligent machines and real-world sensors.
+          I work across robotics, autonomous vehicles and industrial systems,
+          turning complex technical problems into tools people can actually use.
+        </p>
+
+        <div class="actions">
+          <a class="button button-primary" href="#projects">View my projects</a>
+          <a class="button" href="https://github.com/sergio-omar" target="_blank" rel="noreferrer">GitHub profile</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected projects -->
+    <section class="content-section container" id="projects">
+      <div class="section-label">01 / Selected work</div>
+      <h2>Engineering projects</h2>
+      <p class="section-copy">
+        My work includes perception, cloud systems, embedded software and
+        industrial automation. Professional examples are summarized without
+        revealing proprietary source code or confidential system details.
+      </p>
+
+      <div class="filters" id="project-filters" aria-label="Filter projects"></div>
+      <div class="card-grid" id="project-grid"></div>
+    </section>
+
+    <!-- GitHub repositories -->
+    <section class="content-section container" id="github">
+      <div class="section-label">02 / Open source</div>
+      <h2>Public GitHub repositories</h2>
+      <p class="section-copy">
+        These projects show my experiments and personal learning work.
+        The latest public repositories are loaded automatically when GitHub is available.
+      </p>
+
+      <p id="repository-status" role="status"></p>
+      <div class="card-grid" id="repository-grid"></div>
+
+      <div class="actions">
+        <a class="button" href="https://github.com/sergio-omar?tab=repositories" target="_blank" rel="noreferrer">
+          Browse all repositories
+        </a>
+      </div>
+    </section>
+
+    <!-- Work experience -->
+    <section class="content-section container" id="experience">
+      <div class="section-label">03 / Experience</div>
+      <h2>Where I have worked</h2>
+
+      <div class="timeline">
+        <article class="job">
+          <div class="job-date">2023–2026</div>
+          <div>
+            <h3>Software Engineer — Aumovio</h3>
+            <p>
+              Working on software for autonomous truck development. I build
+              monitoring tools, analyze vehicle data and connect cameras,
+              sensors and engineering dashboards with cloud services.
+            </p>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="job-date">2021–2022</div>
+          <div>
+            <h3>Software Engineer — Other Professional Roles</h3>
+            <p>
+              Built software across machine learning, autonomous systems,
+              industrial monitoring and connected applications.
+            </p>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="job-date">2017–2020</div>
+          <div>
+            <h3>Industrial and Robotics Engineer</h3>
+            <p>
+              Developed custom robots, underground mine mapping systems,
+              inspection tools and remote industrial monitoring solutions.
+            </p>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="job-date">Earlier roles</div>
+          <div>
+            <h3>Automotive and Research Engineering</h3>
+            <p>
+              Worked with manufacturing robotic cells, automotive software,
+              research prototypes and embedded systems in Mexico and Japan.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <h2 style="margin-top: 54px;">Technical skills</h2>
+      <div class="skills">
+        <span class="skill">Python</span>
+        <span class="skill">C / C++</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">PHP</span>
+        <span class="skill">SQL</span>
+        <span class="skill">REST APIs</span>
+        <span class="skill">AWS</span>
+        <span class="skill">DigitalOcean</span>
+        <span class="skill">Machine learning</span>
+        <span class="skill">Embedded systems</span>
+        <span class="skill">Industrial automation</span>
+        <span class="skill">MQTT</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="content-section contact" id="contact">
+      <div class="container contact-box">
+        <div>
+          <div class="section-label">04 / Contact</div>
+          <h2>Let us build something useful</h2>
+          <p>
+            I am interested in software engineering roles and projects involving
+            autonomous systems, robotics, connected machines or industrial data.
+          </p>
+        </div>
+
+        <a class="button button-primary" href="mailto:your-email@example.com">Send me an email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Sergio Omar Martínez García</div>
+  </footer>
+
+  <!-- JavaScript for project filters and GitHub repositories -->
+  <script>
+    const projects = [
+      {
+        title: "Autonomous vehicle fleet monitoring",
+        category: "Autonomous systems",
+        context: "Professional · Aumovio / Aurora program",
+        description: "I helped connect vehicle engineering data with AWS and web dashboards so teams could monitor autonomous truck systems from one place.",
+        technologies: ["Python", "AWS", "JavaScript", "Sensor monitoring"]
+      },
+      {
+        title: "Camera health validation",
+        category: "Autonomous systems",
+        context: "Professional · Aumovio",
+        description: "I created a system that checks whether images from multiple truck cameras are usable and sends the health status to engineering dashboards.",
+        technologies: ["Machine learning", "Computer vision", "Monitoring"]
+      },
+      {
+        title: "Voice-based automated labeling",
+        category: "Artificial intelligence",
+        context: "Professional · Aumovio",
+        description: "I developed a voice-based workflow to reduce manual data labeling work. The first tests showed promising accuracy and an opportunity to shorten repetitive review tasks.",
+        technologies: ["AI", "Automation", "Data labeling"]
+      },
+      {
+        title: "ARS-542 radar processing",
+        category: "Autonomous systems",
+        context: "Professional · Aumovio",
+        description: "I contributed mathematical models and software algorithms to a project that moved radar processing from analog to digital methods.",
+        technologies: ["Radar", "Algorithms", "Signal processing"]
+      },
+      {
+        title: "Advanced lane finding",
+        category: "Autonomous systems",
+        context: "Public repository",
+        description: "A Python project that detects road lanes in camera images.",
+        technologies: ["Python", "Computer vision"],
+        url: "https://github.com/sergio-omar/advance_lane_finding",
+        linkText: "View source"
+      },
+      {
+        title: "Self-driving car experiments",
+        category: "Autonomous systems",
+        context: "Public repository",
+        description: "Early experiments for understanding perception and control in self-driving vehicles.",
+        technologies: ["Python", "Autonomous driving"],
+        url: "https://github.com/sergio-omar/self_driving_car",
+        linkText: "View source"
+      },
+      {
+        title: "EEG-controlled robotic hand",
+        category: "Robotics",
+        context: "Research · KIT Japan",
+        description: "I integrated EEG signals, software and embedded control for a robotic prosthetic hand presented at iREX Tokyo in 2013.",
+        technologies: ["EEG", "Embedded systems", "Robotics"]
+      },
+      {
+        title: "Mine inspection and mapping robots",
+        category: "Robotics",
+        context: "Professional project",
+        description: "I helped develop robotic platforms and software for industrial inspection and underground mine mapping.",
+        technologies: ["Robotics", "Industrial inspection"]
+      },
+      {
+        title: "Mine ventilation automation",
+        category: "Industrial systems",
+        context: "Professional project",
+        description: "I built software that remotely monitors and controls ventilation equipment and environmental sensors in industrial facilities.",
+        technologies: ["Python", "JavaScript", "Industrial protocols"]
+      },
+      {
+        title: "Cyberfleet",
+        category: "Web and cloud",
+        context: "Independent product",
+        description: "A GPS fleet platform that receives MQTT location updates and stores vehicle data for time-based monitoring.",
+        technologies: ["Flask", "MQTT", "Apache IoTDB"]
+      },
+      {
+        title: "Quantivo",
+        category: "Web and cloud",
+        context: "Independent product",
+        description: "A web application that reads invoice information and stores the extracted data in a SQL database.",
+        technologies: ["PHP", "SQL", "Web applications"],
+        url: "https://quantivo.com.mx/",
+        linkText: "Visit product"
+      },
+      {
+        title: "Manufacturing robotic cells",
+        category: "Industrial systems",
+        context: "Professional · General Motors",
+        description: "I developed and integrated automation software for manufacturing equipment and Fanuc robotic cells.",
+        technologies: ["Fanuc", "Industrial automation"]
+      },
+      {
+        title: "Neptune water monitoring",
+        category: "Industrial systems",
+        context: "Professional · ABB Research",
+        description: "I developed a database-connected interface for monitoring pressure data from industrial water pumps.",
+        technologies: ["Data visualization", "Industrial software"]
+      }
+    ];
+
+    const projectGrid = document.getElementById("project-grid");
+    const filterContainer = document.getElementById("project-filters");
+
+    function makeTags(items) {
+      const container = document.createElement("div");
+      container.className = "tags";
+
+      items.forEach((item) => {
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = item;
+        container.appendChild(tag);
+      });
+
+      return container;
+    }
+
+    function makeProjectCard(project) {
+      const card = document.createElement("article");
+      card.className = "card";
+      card.dataset.category = project.category;
+
+      const label = document.createElement("div");
+      label.className = "card-label";
+      label.textContent = project.context;
+
+      const title = document.createElement("h3");
+      title.textContent = project.title;
+
+      const description = document.createElement("p");
+      description.textContent = project.description;
+
+      card.append(label, title, description, makeTags(project.technologies));
+
+      if (project.url) {
+        const linkContainer = document.createElement("div");
+        linkContainer.className = "card-link";
+
+        const link = document.createElement("a");
+        link.href = project.url;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+        link.textContent = project.linkText + " ↗";
+
+        linkContainer.appendChild(link);
+        card.appendChild(linkContainer);
+      }
+
+      return card;
+    }
+
+    projects.forEach((project) => {
+      projectGrid.appendChild(makeProjectCard(project));
+    });
+
+    const categories = ["All", ...new Set(projects.map((project) => project.category))];
+
+    categories.forEach((category, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "filter-button";
+      button.textContent = category;
+
+      if (index === 0) button.classList.add("active");
+
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".filter-button").forEach((filterButton) => {
+          filterButton.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        document.querySelectorAll("#project-grid .card").forEach((card) => {
+          card.hidden = category !== "All" && card.dataset.category !== category;
+        });
+      });
+
+      filterContainer.appendChild(button);
+    });
+
+    const repositoryGrid = document.getElementById("repository-grid");
+    const repositoryStatus = document.getElementById("repository-status");
+
+    const selectedRepositories = [
+      ["self_driving_car", "Foundational self-driving vehicle programs", "Python"],
+      ["advance_lane_finding", "Advanced lane finding project", "Python"],
+      ["trading_bot", "Binance RSI trading bot", "Python"],
+      ["video_from_website", "Public code repository", ""],
+      ["expediente_clinico", "Clinical records application", "JavaScript"],
+      ["sergio-omar.github.io", "Personal portfolio website", "JavaScript"]
+    ];
+
+    function showRepositories(repositories) {
+      repositoryGrid.replaceChildren();
+
+      repositories.forEach((repository) => {
+        const card = document.createElement("article");
+        card.className = "card";
+
+        const label = document.createElement("div");
+        label.className = "card-label";
+        label.textContent = "GitHub repository";
+
+        const title = document.createElement("h3");
+        title.textContent = repository.name.replaceAll("_", " ");
+
+        const description = document.createElement("p");
+        description.textContent = repository.description || "Explore the code and documentation on GitHub.";
+
+        const technology = document.createElement("div");
+        technology.className = "tags";
+
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = repository.language || "Source code";
+        technology.appendChild(tag);
+
+        const linkContainer = document.createElement("div");
+        linkContainer.className = "card-link";
+
+        const link = document.createElement("a");
+        link.href = repository.html_url;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+        link.textContent = "View repository ↗";
+
+        linkContainer.appendChild(link);
+        card.append(label, title, description, technology, linkContainer);
+        repositoryGrid.appendChild(card);
+      });
+    }
+
+    const fallbackRepositories = selectedRepositories.map(([name, description, language]) => ({
+      name,
+      description,
+      language,
+      html_url: `https://github.com/sergio-omar/${name}`
+    }));
+
+    showRepositories(fallbackRepositories);
+    repositoryStatus.textContent = "Showing selected repositories while checking for the latest GitHub listings.";
+
+    async function loadRepositories() {
+      try {
+        const response = await fetch("https://api.github.com/users/sergio-omar/repos?per_page=100&sort=updated");
+
+        if (!response.ok) throw new Error("GitHub is unavailable");
+
+        const repositories = await response.json();
+        showRepositories(repositories);
+        repositoryStatus.textContent = `${repositories.length} public repositories · Live GitHub listing`;
+      } catch (error) {
+        repositoryStatus.textContent = "The live GitHub listing is unavailable. Selected repositories are shown below.";
+      }
+    }
+
+    loadRepositories();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
